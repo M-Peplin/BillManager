@@ -23,6 +23,9 @@ namespace BillManager.EF
         {
             // base.OnModelCreating(modelBuilder);
             modelBuilder.ApplyConfiguration(new ApplicationUserConfiguration());
+            modelBuilder.ApplyConfiguration(new BillConfiguration());
+            modelBuilder.ApplyConfiguration(new InformationsConfiguration());
+            base.OnModelCreating(modelBuilder);
         }
 
     }
