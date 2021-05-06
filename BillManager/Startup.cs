@@ -12,6 +12,9 @@ using System.Collections.Generic;
 using System.Linq;
 using BillManager.EF;
 using System.Threading.Tasks;
+using Swashbuckle;
+using Swashbuckle.Swagger;
+using Microsoft.OpenApi.Models;
 
 namespace BillManager
 {
@@ -26,7 +29,7 @@ namespace BillManager
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
-        {
+        {            
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
@@ -38,6 +41,15 @@ namespace BillManager
             services.AddTransient<IEmailSender, EmailSender>();
 
             services.AddMvc();
+
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Version = "v1",
+                    Title = "Bill Manager"
+                });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -63,6 +75,12 @@ namespace BillManager
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+                {
+                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Bill Manager");
+                });
         }
     }
 }
