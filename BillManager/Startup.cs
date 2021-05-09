@@ -15,6 +15,8 @@ using System.Threading.Tasks;
 using Swashbuckle;
 using Swashbuckle.Swagger;
 using Microsoft.OpenApi.Models;
+using AutoMapper;
+using BillManager.Extensions.Mapper;
 
 namespace BillManager
 {
@@ -49,7 +51,9 @@ namespace BillManager
                     Version = "v1",
                     Title = "Bill Manager"
                 });
-            });
+            });            
+
+            services.AddAutoMapper(typeof(Startup));         
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
