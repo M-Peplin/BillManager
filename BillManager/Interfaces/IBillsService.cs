@@ -9,7 +9,7 @@ namespace BillManager.Interfaces
     public interface IBillsService
     {
         ResponseDTO AddBill(BillDTO billDTO);
-        ResponseDTO EditBIll(BillDTO billDTO);
+        ResponseDTO EditBill(BillDTO billDTO);
         ResponseDTO DeleteBill(string mail);
         BillsDTO GetAllBillByUser(string mail);
     }
