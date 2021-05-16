@@ -11,6 +11,6 @@ namespace BillManager.Interfaces
         ResponseDTO AddInformation(InformationDTO informationDTO);
         ResponseDTO EditInformation(InformationDTO informationDTO);
         ResponseDTO DeleteInformation(string mail);
-        ResponseDTO GetAllByuser(string userId);
+        InformationsDTO GetAllByUser(string userId);
     }
 }

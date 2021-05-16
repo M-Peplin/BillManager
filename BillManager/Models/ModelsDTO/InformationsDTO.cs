@@ -7,6 +7,6 @@ namespace BillManager.Models.ModelsDTO
 {
     public class InformationsDTO
     {
-        public IList<Information> informationList { get; set; }
+        public IList<InformationDTO> informationList { get; set; }
     }
 }
